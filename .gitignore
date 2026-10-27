@@ -1,0 +1,23 @@
+# Deny by default, then allow exactly what the site serves.
+# Keeps the forensic reports, third-party reference copies, source GIF,
+# font archives and working screenshots out of a public repo.
+*
+
+!.gitignore
+!index.html
+!servicos.html
+!metodologia.html
+!blog.html
+!contato.html
+!hikari-site.css
+!hikari-site.js
+!transition.js
+!Geist-Mono-wght-400.woff2
+!InstrumentSerif.woff2
+!Switzer-400.woff2
+!Switzer-500.woff2
+!fonts/
+!fonts/HikaSans-Regular.woff2
+!fonts/HikaSans-Bold.woff2
+!fonts/Onest-Variable.ttf
+!.nojekyll

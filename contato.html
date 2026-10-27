@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contato · Hikari — fale com quem vai executar o teste</title>
+<meta name="description" content="Fale com a Hikari: 30 minutos para definir escopo, prazo e prioridade. Canal separado para relato de vulnerabilidade e para suspeita de incidente em andamento.">
+<link rel="stylesheet" href="./hikari-site.css">
+<style>
+/* Contato-only: the urgent banner and the channel column. */
+.urgent{display:flex;align-items:flex-start;gap:18px;padding:22px var(--shell-pad);border-bottom:1px solid var(--rule);background:rgba(255,255,255,.025)}
+.urgent .bang{font:400 12px/1 Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:#08090b;background:#f2f1ef;padding:7px 11px;border-radius:5px;flex:none;margin:0}
+.urgent p{margin:0;font-size:15px;line-height:1.5;color:var(--muted);padding-top:3px}
+.urgent a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--rule-strong)}
+.urgent a:hover{border-color:#f2f1ef}
+
+.channel dl{margin:0;display:grid;gap:26px}
+.channel dt{font:400 12px/1 Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 8px}
+.channel dd{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+.channel dd a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--rule-strong)}
+.channel dd a:hover{border-color:#f2f1ef}
+.channel .fp{display:block;font:400 12px/1.6 Mono,monospace;color:var(--faint);word-break:break-all;letter-spacing:.04em;margin-top:4px}
+
+@media(max-width:900px){
+  .urgent{flex-direction:column;gap:12px;padding:18px var(--shell-pad)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<main class="shell">
+  <header class="nav" aria-label="Navegação principal">
+    <a class="brand" href="./index.html">Hikari</a>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <nav class="navlinks" id="navlinks" aria-label="Seções do site">
+      <a href="./servicos.html">Serviços</a>
+      <a href="./metodologia.html">Metodologia</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./contato.html" aria-current="page">Contato</a>
+    </nav>
+    <div class="locale" aria-label="Idioma"><span aria-current="page">PT-BR</span><span aria-hidden="true">/</span><span lang="en">EN</span></div>
+  </header>
+  <i class="cross x1"></i><i class="cross x2"></i><i class="cross x3"></i><i class="cross x4"></i>
+
+  <section class="pagehead" id="conteudo">
+    <p class="eyebrow">Contato / primeira conversa</p>
+    <h1>Trinta minutos para saber o que está <span class="nb"><span class="glitch-word" data-text="aberto">aberto</span>.</span></h1>
+    <p class="lead">Você fala com quem vai executar o teste, não com um time comercial. Saímos da conversa com <strong>escopo, prazo e ordem de prioridade</strong> — ou com a recomendação honesta de que ainda não é hora de contratar.</p>
+  </section>
+
+  <div class="urgent">
+    <p class="bang">Incidente em andamento</p>
+    <p>Se você suspeita de comprometimento ativo agora, não use o formulário. Escreva para <a href="mailto:ir@hikari.security">ir@hikari.security</a> com o assunto <strong>URGENTE</strong> — esse canal é monitorado fora do horário comercial e a resposta sai em até 1 hora.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Conte o contexto</h2>
+      <p>Quanto mais concreto, mais útil a primeira resposta. Nada aqui é compromisso.</p>
+      <p class="section-note">Resposta em 1 dia útil</p>
+    </div>
+
+    <div class="contact">
+      <div>
+        <form class="form" id="contactForm" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" type="text" placeholder="Como te chamamos" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="empresa">Empresa</label>
+              <input id="empresa" name="empresa" type="text" placeholder="Nome da organização" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">E-mail corporativo</label>
+              <input id="email" name="email" type="email" placeholder="voce@empresa.com" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="telefone">Telefone</label>
+              <div class="phone-field">
+                <select id="pais" name="pais" aria-label="Código do país" required>
+                  <option value="+55" selected>BR +55</option>
+                  <option value="+1">US +1</option>
+                  <option value="+1-ca">CA +1</option>
+                  <option value="+52">MX +52</option>
+                  <option value="+44">GB +44</option>
+                  <option value="+351">PT +351</option>
+                  <option value="+34">ES +34</option>
+                  <option value="+33">FR +33</option>
+                  <option value="+49">DE +49</option>
+                  <option value="+39">IT +39</option>
+                  <option value="+31">NL +31</option>
+                  <option value="+41">CH +41</option>
+                  <option value="+46">SE +46</option>
+                  <option value="+47">NO +47</option>
+                  <option value="+45">DK +45</option>
+                  <option value="+48">PL +48</option>
+                  <option value="+30">GR +30</option>
+                  <option value="+7">RU +7</option>
+                  <option value="+81">JP +81</option>
+                  <option value="+82">KR +82</option>
+                  <option value="+86">CN +86</option>
+                  <option value="+91">IN +91</option>
+                  <option value="+61">AU +61</option>
+                  <option value="+64">NZ +64</option>
+                  <option value="+27">ZA +27</option>
+                  <option value="+971">AE +971</option>
+                  <option value="+972">IL +972</option>
+                  <option value="+234">NG +234</option>
+                  <option value="+254">KE +254</option>
+                  <option value="+54">AR +54</option>
+                  <option value="+56">CL +56</option>
+                  <option value="+57">CO +57</option>
+                  <option value="+51">PE +51</option>
+                </select>
+                <input id="telefone" name="telefone" type="tel" placeholder="DDD + número" inputmode="numeric" autocomplete="tel-national" pattern="[0-9]{10,11}" maxlength="11" title="Digite o DDD e o número, somente números" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="interesse">Frente de interesse</label>
+              <select id="interesse" name="interesse">
+                <option value="">Ainda não sei — me orientem</option>
+                <option value="pentest">Pentest</option>
+                <option value="appsec">AppSec</option>
+                <option value="purple">Purple Team</option>
+                <option value="hunting">Threat Hunting</option>
+                <option value="intel">Threat Intelligence</option>
+                <option value="florence">Florence (programa contínuo)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="prazo">Urgência</label>
+              <select id="prazo" name="prazo">
+                <option value="">Sem prazo definido</option>
+                <option value="30">Nas próximas 4 semanas</option>
+                <option value="90">Neste trimestre</option>
+                <option value="180">No semestre</option>
+                <option value="exigencia">Exigência de cliente ou auditoria</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="mensagem">Contexto</label>
+            <textarea id="mensagem" name="mensagem" placeholder="O que você quer proteger, o que já foi testado antes e o que te trouxe aqui agora." required></textarea>
+            <p class="hint">Não inclua credenciais, chaves, dados pessoais de terceiros ou detalhe de vulnerabilidade específica neste campo. Esse material vem depois, por canal cifrado.</p>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" name="consentimento" value="sim" required>
+            <span>Autorizo a Hikari a usar estes dados para responder a este contato, conforme a LGPD. Não enviamos comunicação comercial sem pedido.</span>
+          </label>
+
+          <p class="form-error" role="alert"></p>
+
+          <div>
+            <button class="btn" type="submit"><span class="roll"><span>Enviar contexto</span><span aria-hidden="true">Enter ↵</span></span></button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="channel" aria-label="Outros canais">
+        <dl>
+          <div>
+            <dt>Comercial e escopo</dt>
+            <dd><a href="mailto:contato@hikari.security">contato@hikari.security</a><br>Resposta em até 1 dia útil.</dd>
+          </div>
+          <div>
+            <dt>Incidente em andamento</dt>
+            <dd><a href="mailto:ir@hikari.security">ir@hikari.security</a><br>Monitorado 24h. Assunto <strong>URGENTE</strong>, resposta em até 1 hora.</dd>
+          </div>
+          <div>
+            <dt>Relato de vulnerabilidade</dt>
+            <dd><a href="mailto:security@hikari.security">security@hikari.security</a><br>Encontrou uma falha na nossa própria infraestrutura? Conte. Não acionamos jurídico contra pesquisa feita de boa-fé e sem dano.</dd>
+          </div>
+          <div>
+            <dt>Chave PGP</dt>
+            <dd>Para enviar detalhe técnico cifrado:<span class="fp">A91C 4F2B 77D0 59E8 3C14 · 6B82 1F0A D5E9 4477 B2C3</span></dd>
+          </div>
+          <div>
+            <dt>Horário</dt>
+            <dd>Seg a sex, 9h às 18h (BRT, UTC−3). Fora disso, apenas o canal de incidente.</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Como a conversa funciona</h2>
+      <p>Três encontros no máximo entre o seu primeiro e-mail e o início do teste.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="card">
+        <p class="idx">01</p>
+        <h3>Conversa inicial</h3>
+        <p>Trinta minutos, por vídeo ou telefone. Você descreve o ambiente e a preocupação; nós dizemos qual frente responde a ela e o que seria necessário para executar. Se a resposta for “ainda não é hora de contratar”, dizemos isso.</p>
+        <p class="tail">30 minutos</p>
+      </article>
+
+      <article class="card">
+        <p class="idx">02</p>
+        <h3>Levantamento de escopo</h3>
+        <p>Mapeamos ativos, perfis de usuário, janelas possíveis e restrições. Essa etapa é o que permite um orçamento firme em vez de uma faixa larga — e costuma ser assíncrona, por questionário.</p>
+        <p class="tail">2 a 4 dias</p>
+      </article>
+
+      <article class="card">
+        <p class="idx">03</p>
+        <h3>Proposta e autorização</h3>
+        <p>Escopo por escrito, prazo, valor fechado, regras de engajamento e carta de autorização. Assinado isso, o teste entra na agenda. Nenhum pacote sai antes dessa assinatura.</p>
+        <p class="tail">1 a 2 dias</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Perguntas que aparecem nessa fase</h2>
+      <p class="section-note">Antes de escrever</p>
+    </div>
+
+    <div class="faq">
+      <details open>
+        <summary>Preciso saber o que quero contratar antes de falar com vocês?</summary>
+        <p>Não. A opção “ainda não sei” no formulário é usada com frequência e não atrasa nada — na prática, a conversa inicial existe justamente para isso. Traga a preocupação em linguagem comum (“temos uma API nova”, “um cliente exigiu pentest”, “desconfiamos de acesso indevido”) e nós traduzimos para escopo.</p>
+      </details>
+      <details>
+        <summary>Vocês atendem empresa pequena?</summary>
+        <p>Sim, e com frequência. Escopo pequeno custa proporcionalmente menos; o que não fazemos é reduzir cobertura escondido para caber num orçamento. Se o valor não fecha, dizemos qual parte do escopo cortar e qual risco isso deixa em aberto, para você decidir com informação.</p>
+      </details>
+      <details>
+        <summary>Posso mandar detalhe técnico sensível pelo formulário?</summary>
+        <p>Prefira não. O formulário trafega por HTTPS, mas o conteúdo chega a uma caixa de e-mail comum. Para arquitetura detalhada, resultado de teste anterior ou detalhe de vulnerabilidade, pedimos o envio por canal cifrado após o primeiro contato — ou use a chave PGP listada acima.</p>
+      </details>
+      <details>
+        <summary>Em quanto tempo vocês conseguem começar?</summary>
+        <p>A agenda costuma abrir em 2 a 4 semanas a partir da assinatura. Para suspeita de incidente ativo, a resposta é imediata e não entra nessa fila — use o canal de incidente.</p>
+      </details>
+      <details>
+        <summary>O que acontece com os dados que eu enviar aqui?</summary>
+        <p>São usados apenas para responder a este contato e ficam retidos por 12 meses, salvo contrato assinado. Você pode pedir acesso, correção ou exclusão a qualquer momento escrevendo para <a href="mailto:privacidade@hikari.security">privacidade@hikari.security</a>. Não compartilhamos com terceiros nem alimentamos lista de marketing.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h2>Ainda em dúvida sobre o que pedir?</h2>
+      <p>A página de serviços tem uma tabela que vai da sua pergunta até a frente que responde a ela.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-ghost" href="./servicos.html">Ver os serviços</a>
+      <a class="btn btn-ghost" href="./metodologia.html">Ver a metodologia</a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>
+      <p class="mark">Hikari</p>
+      <p>Cibersegurança ofensiva. Medimos a sua exposição antes de quem não avisa.</p>
+    </div>
+    <nav class="footlinks" aria-label="Rodapé">
+      <a href="./index.html">Início</a>
+      <a href="./servicos.html">Serviços</a>
+      <a href="./metodologia.html">Metodologia</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./contato.html">Contato</a>
+    </nav>
+    <p class="version">hikari / offensive security</p>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="./hikari-site.js" defer></script>
+<script src="./transition.js" defer></script>
+</body>
+</html>

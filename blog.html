@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog · Hikari — notas de campo sobre segurança ofensiva</title>
+<meta name="description" content="Notas de campo da Hikari: o que realmente encontramos em pentests, como medir detecção, e por que a maior parte do risco não vem da falha mais técnica.">
+<link rel="stylesheet" href="./hikari-site.css">
+<style>
+/* Blog-only: the filter rail, the lead article block and the signup. */
+.filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:30px}
+.filters button{background:transparent;border:1px solid var(--rule);border-radius:999px;color:var(--muted);padding:8px 16px;font-size:13px;letter-spacing:-.2px;transition:border-color .24s ease,color .24s ease,background-color .24s ease}
+.filters button:hover{border-color:var(--rule-strong);color:#fff}
+.filters button[aria-pressed="true"]{background:#f2f1ef;border-color:#f2f1ef;color:#08090b}
+.filters .count{margin-left:auto;font:400 12px/1 Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+
+.lead-post{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:1px;background:var(--rule)}
+.lead-post>*{background:var(--bg);padding:38px 34px;margin:0}
+.lead-post h2{font-family:Onest,Arial,sans-serif;font-weight:400;font-size:clamp(26px,2.8vw,40px);line-height:1.15;letter-spacing:-.03em;margin:14px 0 18px}
+.lead-post p{color:var(--muted);font-size:16px;line-height:1.55;margin:0 0 22px}
+.lead-post .byline{display:flex;gap:14px;flex-wrap:wrap;font:400 12px/1.4 Mono,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0}
+.lead-post .pull{display:grid;align-content:center;gap:18px}
+.lead-post .pull blockquote{margin:0;font-family:Onest,Arial,sans-serif;font-size:19px;line-height:1.45;letter-spacing:-.3px;color:var(--text)}
+.lead-post .pull figcaption{font:400 12px/1.5 Mono,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+
+.subscribe{display:grid;gap:16px;max-width:460px}
+.subscribe .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end}
+
+@media(max-width:900px){
+  .lead-post{grid-template-columns:minmax(0,1fr)}
+  .lead-post>*{padding:28px 22px}
+  .filters{padding-bottom:22px}
+  .filters .count{margin-left:0;width:100%}
+  .subscribe .row{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<main class="shell">
+  <header class="nav" aria-label="Navegação principal">
+    <a class="brand" href="./index.html">Hikari</a>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <nav class="navlinks" id="navlinks" aria-label="Seções do site">
+      <a href="./servicos.html">Serviços</a>
+      <a href="./metodologia.html">Metodologia</a>
+      <a href="./blog.html" aria-current="page">Blog</a>
+      <a href="./contato.html">Contato</a>
+    </nav>
+    <div class="locale" aria-label="Idioma"><span aria-current="page">PT-BR</span><span aria-hidden="true">/</span><span lang="en">EN</span></div>
+  </header>
+  <i class="cross x1"></i><i class="cross x2"></i><i class="cross x3"></i><i class="cross x4"></i>
+
+  <section class="pagehead" id="conteudo">
+    <p class="eyebrow">Blog / notas de campo</p>
+    <h1>O que a gente <span class="glitch-word" data-text="encontra">encontra</span> quando ninguém está olhando.</h1>
+    <p class="lead">Sem listas de dez dicas e sem alarmismo de vendor. Só o que aparece de verdade em engajamento autorizado, <strong>escrito por quem executou</strong> — incluindo as vezes em que a nossa hipótese estava errada.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Em destaque</h2>
+      <p class="section-note">Outubro de 2026</p>
+    </div>
+
+    <article class="lead-post">
+      <div>
+        <p class="eyebrow">Pentest · 11 min de leitura</p>
+        <h2>A credencial que abriu tudo estava num repositório público desde 2023.</h2>
+        <p>Em quatro dos últimos sete engajamentos externos, o caminho mais curto até acesso privilegiado não foi uma vulnerabilidade de software: foi um segredo esquecido em histórico de commit, log de CI ou arquivo de configuração versionado por engano. Nenhum deles aparecia em scanner de vulnerabilidade, porque tecnicamente não havia vulnerabilidade — havia uma chave válida.</p>
+        <p>Neste texto mostramos como o reconhecimento encontra esses segredos, por que rotação sem invalidação não resolve, e o que mudar no pipeline para que a próxima chave vazada expire antes de ser útil.</p>
+        <p class="byline"><span>24 out 2026</span><span>Equipe Hikari</span><span>Reconhecimento</span></p>
+      </div>
+      <figure class="pull">
+        <blockquote>“O atacante não precisa da falha mais sofisticada. Precisa de uma que ninguém revogou.”</blockquote>
+        <figcaption>Trecho — seção 3, rotação não é invalidação</figcaption>
+      </figure>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Todos os artigos</h2>
+      <p>Filtre pelo tema que importa para o seu momento.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filtrar artigos por tema">
+      <button type="button" data-filter="todos" aria-pressed="true">Todos</button>
+      <button type="button" data-filter="pentest" aria-pressed="false">Pentest</button>
+      <button type="button" data-filter="appsec" aria-pressed="false">AppSec</button>
+      <button type="button" data-filter="deteccao" aria-pressed="false">Detecção</button>
+      <button type="button" data-filter="intel" aria-pressed="false">Intelligence</button>
+      <button type="button" data-filter="gestao" aria-pressed="false">Gestão de risco</button>
+      <p class="count" id="postCount" aria-live="polite">9 artigos</p>
+    </div>
+
+    <ul class="postlist">
+      <li data-tags="pentest intel">
+        <a href="#">
+          <time datetime="2026-10-24">24 out 2026</time>
+          <div>
+            <h3>A credencial que abriu tudo estava num repositório público desde 2023</h3>
+            <p>Por que segredo vazado vence exploit em quatro dos últimos sete engajamentos externos — e o que fazer no pipeline.</p>
+          </div>
+          <p class="tag">Reconhecimento</p>
+        </a>
+      </li>
+
+      <li data-tags="deteccao">
+        <a href="#">
+          <time datetime="2026-10-09">9 out 2026</time>
+          <div>
+            <h3>Seu SIEM tem 1.400 regras e detecta três técnicas</h3>
+            <p>Medimos cobertura real de detecção em seis clientes mapeando regra a regra contra MITRE ATT&amp;CK. O resultado não foi lisonjeiro para ninguém.</p>
+          </div>
+          <p class="tag">Purple Team</p>
+        </a>
+      </li>
+
+      <li data-tags="appsec">
+        <a href="#">
+          <time datetime="2026-09-22">22 set 2026</time>
+          <div>
+            <h3>Controle de acesso quebrado continua sendo a falha mais barata de achar e a mais cara de ignorar</h3>
+            <p>Trocar um ID na URL ainda funciona em produção com mais frequência do que qualquer relatório de mercado admite. Como testar isso de forma sistemática.</p>
+          </div>
+          <p class="tag">AppSec</p>
+        </a>
+      </li>
+
+      <li data-tags="gestao">
+        <a href="#">
+          <time datetime="2026-09-05">5 set 2026</time>
+          <div>
+            <h3>Pare de priorizar por CVSS</h3>
+            <p>Uma nota 9.8 em serviço interno sem dado sensível perde para uma 6.5 no caminho do seu faturamento. Como ajustar severidade por contexto sem virar achismo.</p>
+          </div>
+          <p class="tag">Gestão de risco</p>
+        </a>
+      </li>
+
+      <li data-tags="pentest appsec">
+        <a href="#">
+          <time datetime="2026-08-18">18 ago 2026</time>
+          <div>
+            <h3>Cadeia de exploração: três falhas médias que somam uma crítica</h3>
+            <p>Um caso real, anonimizado: upload sem validação de tipo, path traversal parcial e um worker com privilégio demais. Isoladas, nenhuma assustava.</p>
+          </div>
+          <p class="tag">Pentest</p>
+        </a>
+      </li>
+
+      <li data-tags="intel">
+        <a href="#">
+          <time datetime="2026-08-01">1 ago 2026</time>
+          <div>
+            <h3>Threat intel que serve para decidir, não para preencher dashboard</h3>
+            <p>A diferença entre consumir feed de IOC e saber qual grupo tem motivo econômico para atacar o seu setor neste trimestre.</p>
+          </div>
+          <p class="tag">Intelligence</p>
+        </a>
+      </li>
+
+      <li data-tags="appsec deteccao">
+        <a href="#">
+          <time datetime="2026-07-14">14 jul 2026</time>
+          <div>
+            <h3>SAST no CI sem transformar o pipeline num muro</h3>
+            <p>Como escolher o que bloqueia merge e o que apenas registra, para que o time não aprenda a ignorar o alerta na segunda semana.</p>
+          </div>
+          <p class="tag">AppSec</p>
+        </a>
+      </li>
+
+      <li data-tags="pentest gestao">
+        <a href="#">
+          <time datetime="2026-06-27">27 jun 2026</time>
+          <div>
+            <h3>Fizemos um pentest e não achamos quase nada. Foi um bom teste?</h3>
+            <p>Sobre resultado negativo como evidência legítima, e os sinais de que a cobertura — não a sua segurança — foi o que ficou rasa.</p>
+          </div>
+          <p class="tag">Metodologia</p>
+        </a>
+      </li>
+
+      <li data-tags="deteccao gestao">
+        <a href="#">
+          <time datetime="2026-06-10">10 jun 2026</time>
+          <div>
+            <h3>O inventário que você acha que tem</h3>
+            <p>Em todo engajamento externo encontramos ativos que o cliente não sabia que estavam no ar. Por que isso acontece sempre e como reduzir a diferença.</p>
+          </div>
+          <p class="tag">Superfície</p>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Receba as notas por e-mail</h2>
+      <p>Um envio por mês, só quando há algo de campo para contar. Sem newsletter de rodapé.</p>
+    </div>
+
+    <div class="feature">
+      <div>
+        <form class="form subscribe" id="subForm" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="subEmail">Seu e-mail</label>
+              <input id="subEmail" name="email" type="email" placeholder="voce@empresa.com" autocomplete="email" required>
+            </div>
+            <button class="btn" type="submit"><span class="roll"><span>Assinar</span><span aria-hidden="true">Enter ↵</span></span></button>
+          </div>
+          <p class="hint">Usamos o endereço apenas para este envio. Cancelamento em um clique, em qualquer edição.</p>
+          <p class="form-error" role="alert"></p>
+        </form>
+      </div>
+      <div class="stack">
+        <div>
+          <h4>O que entra</h4>
+          <p>Achado recorrente que vimos em campo, com o detalhe técnico necessário para você testar o mesmo no seu ambiente.</p>
+        </div>
+        <div>
+          <h4>O que não entra</h4>
+          <p>Convite para webinar, resumo de notícia de brecha alheia e CVE sem contexto do seu stack.</p>
+        </div>
+        <div>
+          <h4>Frequência</h4>
+          <p>Mensal no máximo. Mês sem conteúdo relevante é mês sem envio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h2>Prefere a versão aplicada ao seu ambiente?</h2>
+      <p>O que está nos artigos vira achado concreto quando testado na sua superfície. Começa com uma conversa de 30 minutos.</p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="./contato.html"><span class="roll"><span>Falar com a Hikari</span><span aria-hidden="true">Vamos →</span></span></a>
+      <a class="btn btn-ghost" href="./servicos.html">Ver os serviços</a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>
+      <p class="mark">Hikari</p>
+      <p>Cibersegurança ofensiva. Medimos a sua exposição antes de quem não avisa.</p>
+    </div>
+    <nav class="footlinks" aria-label="Rodapé">
+      <a href="./index.html">Início</a>
+      <a href="./servicos.html">Serviços</a>
+      <a href="./metodologia.html">Metodologia</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./contato.html">Contato</a>
+    </nav>
+    <p class="version">hikari / offensive security</p>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="./hikari-site.js" defer></script>
+<script src="./transition.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Metodologia · Hikari — como um teste da Hikari acontece</title>
+<meta name="description" content="As sete etapas de um engajamento Hikari: escopo autorizado, reconhecimento, exploração, pós-exploração, relatório, repasse e retest. Com os padrões e limites que seguimos.">
+<link rel="stylesheet" href="./hikari-site.css">
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<main class="shell">
+  <header class="nav" aria-label="Navegação principal">
+    <a class="brand" href="./index.html">Hikari</a>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <nav class="navlinks" id="navlinks" aria-label="Seções do site">
+      <a href="./servicos.html">Serviços</a>
+      <a href="./metodologia.html" aria-current="page">Metodologia</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./contato.html">Contato</a>
+    </nav>
+    <div class="locale" aria-label="Idioma"><span aria-current="page">PT-BR</span><span aria-hidden="true">/</span><span lang="en">EN</span></div>
+  </header>
+  <i class="cross x1"></i><i class="cross x2"></i><i class="cross x3"></i><i class="cross x4"></i>
+
+  <section class="pagehead" id="conteudo">
+    <p class="eyebrow">Metodologia / processo</p>
+    <h1>Um teste só vale o que a sua <span class="glitch-word" data-text="evidência">evidência</span> prova.</h1>
+    <p class="lead">Nosso processo existe para eliminar duas coisas: achado que ninguém consegue reproduzir e correção que ninguém verificou. Sete etapas, cada uma com <strong>entrada, saída e critério de pronto</strong> definidos antes de começar.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>O engajamento, etapa por etapa</h2>
+      <p>Da autorização assinada ao achado que falha ao ser explorado de novo.</p>
+      <p class="section-note">07 etapas</p>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <div>
+          <h3>Escopo e autorização</h3>
+          <p class="meta">1 a 3 dias</p>
+        </div>
+        <p>Definimos ativos no escopo e fora dele, janelas de execução, limites de intensidade, contatos de emergência e o que caracteriza uma parada imediata. Nada começa sem autorização assinada por quem tem poder para concedê-la — se o ativo é de terceiro, a autorização do terceiro também entra.</p>
+        <ul class="deliver">
+          <li>Carta de autorização e regras de engajamento</li>
+          <li>Inventário de escopo com exclusões explícitas</li>
+          <li>Canal de interrupção e contatos 24h</li>
+          <li>NDA e acordo de tratamento de dados</li>
+        </ul>
+      </li>
+
+      <li>
+        <div>
+          <h3>Reconhecimento</h3>
+          <p class="meta">2 a 5 dias</p>
+        </div>
+        <p>Mapeamos a superfície como um atacante faria: domínios e subdomínios, serviços expostos, tecnologias, credenciais já vazadas, pegada de funcionários e ativos esquecidos que ninguém no seu inventário lembra que existem. Esta etapa costuma ser a que mais surpreende o cliente.</p>
+        <ul class="deliver">
+          <li>Mapa de superfície de ataque</li>
+          <li>Ativos descobertos fora do inventário</li>
+          <li>Exposição de credenciais e dados públicos</li>
+          <li>Priorização dos alvos para a próxima etapa</li>
+        </ul>
+      </li>
+
+      <li>
+        <div>
+          <h3>Análise de vulnerabilidades</h3>
+          <p class="meta">3 a 7 dias</p>
+        </div>
+        <p>Ferramenta aponta, pessoa confirma. Rodamos varredura automatizada para cobertura e depois revisamos tudo manualmente, porque a maior parte do que importa — falha de lógica de negócio, controle de acesso quebrado, cadeia de permissões — nenhum scanner encontra. Falso positivo não entra no relatório.</p>
+        <ul class="deliver">
+          <li>Achados validados manualmente</li>
+          <li>Falsos positivos descartados e registrados</li>
+          <li>Hipóteses de cadeia de exploração</li>
+          <li>Severidade preliminar em CVSS v4</li>
+        </ul>
+      </li>
+
+      <li>
+        <div>
+          <h3>Exploração</h3>
+          <p class="meta">4 a 10 dias</p>
+        </div>
+        <p>Provamos o impacto dentro dos limites acordados. O objetivo não é somar achados, é demonstrar a cadeia: como uma falha de severidade média combinada com outra chega a dado sensível ou a controle administrativo. Achado crítico é comunicado no mesmo dia, antes de qualquer relatório.</p>
+        <ul class="deliver">
+          <li>Prova de conceito reproduzível por achado</li>
+          <li>Cadeias de ataque documentadas ponta a ponta</li>
+          <li>Alerta imediato para severidade crítica</li>
+          <li>Registro de tudo que foi tentado e resistiu</li>
+        </ul>
+      </li>
+
+      <li>
+        <div>
+          <h3>Pós-exploração e limpeza</h3>
+          <p class="meta">1 a 3 dias</p>
+        </div>
+        <p>Medimos o alcance real a partir do acesso obtido — movimentação lateral, escalonamento, persistência — e então desfazemos tudo. Toda conta criada, arquivo enviado, chave plantada e alteração de configuração sai do ambiente, com log do que foi removido e quando.</p>
+        <ul class="deliver">
+          <li>Avaliação de alcance e movimentação lateral</li>
+          <li>Log de artefatos criados e removidos</li>
+          <li>Confirmação de ambiente restaurado</li>
+          <li>Indicadores para o seu time de detecção</li>
+        </ul>
+      </li>
+
+      <li>
+        <div>
+          <h3>Relatório e repasse</h3>
+          <p class="meta">3 a 5 dias</p>
+        </div>
+        <p>Dois documentos: o técnico, com passo a passo reproduzível e caminho de correção por achado; e o executivo, com risco traduzido em impacto de negócio e ordem de prioridade. Depois, uma sessão ao vivo com quem vai corrigir — porque relatório lido sozinho gera interpretação errada.</p>
+        <ul class="deliver">
+          <li>Relatório técnico com reprodução passo a passo</li>
+          <li>Sumário executivo com risco e prioridade</li>
+          <li>Sessão de repasse de 1 hora com o time</li>
+          <li>Plano de correção com ordem sugerida</li>
+        </ul>
+      </li>
+
+      <li>
+        <div>
+          <h3>Retest</h3>
+          <p class="meta">Até 90 dias depois</p>
+        </div>
+        <p>Depois que você corrige, voltamos a atacar os mesmos pontos. Um achado só muda para fechado quando a exploração original falha — não quando alguém marca a tarefa como concluída. O resultado vira a carta de atestado que auditoria e cliente pedem.</p>
+        <ul class="deliver">
+          <li>Reexecução das provas de conceito originais</li>
+          <li>Status final por achado: fechado, parcial ou aberto</li>
+          <li>Carta de atestado com escopo e período</li>
+          <li>Recomendação para o próximo ciclo</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Padrões que seguimos</h2>
+      <p>Para que o resultado seja comparável, auditável e não dependa de quem executou.</p>
+    </div>
+
+    <table class="spec">
+      <caption>Referências por domínio</caption>
+      <thead>
+        <tr><th scope="col">Domínio</th><th scope="col">Referência</th><th scope="col">Uso prático</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Aplicações web e API</th>
+          <td>OWASP WSTG · OWASP API Top 10</td>
+          <td>Checklist de cobertura por categoria de teste, para que nada fique sem ser tentado.</td>
+        </tr>
+        <tr>
+          <th scope="row">Execução de pentest</th>
+          <td>PTES · OSSTMM · NIST SP 800-115</td>
+          <td>Estrutura das fases e critérios de profundidade por etapa.</td>
+        </tr>
+        <tr>
+          <th scope="row">Técnicas de adversário</th>
+          <td>MITRE ATT&amp;CK</td>
+          <td>Cenários de Purple Team e medição de cobertura de detecção por técnica.</td>
+        </tr>
+        <tr>
+          <th scope="row">Severidade</th>
+          <td>CVSS v4.0 + ajuste de contexto</td>
+          <td>Nota base pelo vetor, nota final pelo impacto no seu negócio — e dizemos quando divergem.</td>
+        </tr>
+        <tr>
+          <th scope="row">Mobile</th>
+          <td>OWASP MASVS · MASTG</td>
+          <td>Nível de verificação acordado antes do teste, por perfil de risco do app.</td>
+        </tr>
+        <tr>
+          <th scope="row">Nuvem</th>
+          <td>CIS Benchmarks · guias do provedor</td>
+          <td>Base de configuração segura contra a qual medimos o desvio real.</td>
+        </tr>
+        <tr>
+          <th scope="row">Dados e privacidade</th>
+          <td>LGPD · ISO/IEC 27001 · 27701</td>
+          <td>Tratamento, retenção e destruição do que encontramos durante o engajamento.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Princípios</h2>
+      <p>O que não negociamos, mesmo quando pedem.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="card">
+        <p class="idx">Autorização primeiro</p>
+        <h3>Sem papel, sem pacote.</h3>
+        <p>Nenhum pacote sai antes da autorização assinada por quem pode concedê-la. Isso inclui pedir autorização do provedor quando o ativo é hospedado por terceiro. Pressa de cronograma não antecipa essa etapa.</p>
+      </article>
+
+      <article class="card">
+        <p class="idx">Mínimo necessário</p>
+        <h3>Prova o impacto, não coleta o dado.</h3>
+        <p>Para demonstrar acesso a um banco não precisamos baixar o banco. Registramos a referência e a contagem, nunca o conteúdo íntegro. Dado sensível não atravessa o relatório.</p>
+      </article>
+
+      <article class="card">
+        <p class="idx">Reprodutibilidade</p>
+        <h3>Se você não repete, não serve.</h3>
+        <p>Cada achado vem com os passos exatos, no ambiente descrito, com o resultado esperado. Se o seu time seguir o relatório e não chegar ao mesmo lugar, o achado volta para a nossa mesa.</p>
+      </article>
+
+      <article class="card">
+        <p class="idx">Severidade honesta</p>
+        <h3>Nota alta precisa de impacto alto.</h3>
+        <p>Não inflamos severidade para engrossar o relatório nem suavizamos para agradar. Quando a nota CVSS e o impacto real divergem, explicamos a divergência em vez de esconder uma das duas.</p>
+      </article>
+
+      <article class="card">
+        <p class="idx">Comunicação durante</p>
+        <h3>Crítico não espera o PDF.</h3>
+        <p>Achado que permite comprometimento imediato é comunicado no mesmo dia, pelo canal combinado, com o mínimo necessário para você conter. O detalhe completo vem depois, no relatório.</p>
+      </article>
+
+      <article class="card">
+        <p class="idx">Fim de ciclo</p>
+        <h3>Devolvemos o ambiente como estava.</h3>
+        <p>Contas, chaves, arquivos e alterações de configuração criados durante o teste são removidos e registrados. Ao fim da retenção contratada, nosso material sobre você é destruído.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>O que esperamos de você</h2>
+      <p>Três coisas mudam a qualidade do resultado mais do que qualquer ferramenta nossa.</p>
+    </div>
+
+    <div class="feature">
+      <div>
+        <p class="eyebrow">Colaboração</p>
+        <h3>O melhor teste acontece com acesso, não contra ele.</h3>
+        <p>Existe um lugar legítimo para o teste totalmente cego — medir a sua detecção. Mas quando o objetivo é encontrar o máximo de falha no prazo contratado, esconder documentação e credenciais de teste só gasta o nosso tempo descobrindo o que você já sabia. Dizemos qual dos dois modos faz sentido para o seu caso antes de assinar.</p>
+      </div>
+      <div class="stack">
+        <div>
+          <h4>Um responsável com decisão</h4>
+          <p>Alguém que possa autorizar escopo, liberar acesso e acionar uma parada sem subir três níveis.</p>
+        </div>
+        <div>
+          <h4>Ambiente e credenciais de teste</h4>
+          <p>Usuários de cada perfil existente. Sem isso, falhas de controle de acesso ficam invisíveis.</p>
+        </div>
+        <div>
+          <h4>Janela de correção reservada</h4>
+          <p>Relatório sem agenda para corrigir é documento parado. Reserve o time antes do teste, não depois.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h2>Quer ver esse processo aplicado ao seu ambiente?</h2>
+      <p>Na primeira conversa definimos escopo, modo de teste, prazo e quem precisa estar envolvido do seu lado.</p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="./contato.html"><span class="roll"><span>Agendar conversa</span><span aria-hidden="true">Vamos →</span></span></a>
+      <a class="btn btn-ghost" href="./servicos.html">Ver os serviços</a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>
+      <p class="mark">Hikari</p>
+      <p>Cibersegurança ofensiva. Medimos a sua exposição antes de quem não avisa.</p>
+    </div>
+    <nav class="footlinks" aria-label="Rodapé">
+      <a href="./index.html">Início</a>
+      <a href="./servicos.html">Serviços</a>
+      <a href="./metodologia.html">Metodologia</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./contato.html">Contato</a>
+    </nav>
+    <p class="version"></p>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="./hikari-site.js" defer></script>
+<script src="./transition.js" defer></script>
+</body>
+</html>
