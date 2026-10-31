@@ -231,8 +231,11 @@ transform:translateY(-50%);pointer-events:none;color:#c9cacc}
   .features{margin-left:auto}
 }
 @media(max-width:999px){
+  /* The dotted band is absolute at the top of the stage: pad the stage past it
+     so the art starts below the dots instead of sitting on them. */
+  .dotband{height:46px}
   .stage{height:auto!important;min-height:0!important;display:flex;flex-direction:column;
-    align-items:center;padding:24px 16px 40px;gap:24px}
+    align-items:center;padding:82px 16px 40px;gap:28px}
   .stage:after{display:none}
   .hero{position:static!important;top:auto!important;left:auto!important;
     width:100%!important;max-width:460px;margin:0 auto;transform:none!important;translate:none!important;text-align:center}
